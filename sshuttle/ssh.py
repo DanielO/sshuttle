@@ -1,6 +1,7 @@
 import sys
 import os
 import re
+import shlex
 import socket
 import zlib
 import imp
@@ -102,7 +103,7 @@ def connect(ssh_cmd, rhostport, python, stderr, options):
         argv = [sys.argv[1], '-c', pyscript]
     else:
         if ssh_cmd:
-            sshl = ssh_cmd.split(' ')
+            sshl = shlex.split(ssh_cmd)
         else:
             sshl = ['ssh']
         if python:
